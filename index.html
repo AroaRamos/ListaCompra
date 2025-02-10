@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div#ticket{
+            border: 2px solid black;
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+            overflow: auto;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Ticket de caja</h1>
+    <label for="">Concepto<input type="text" value="melones" id="concepto"></label>
+    <label for="">Importe<input type="text" id="importe"></label>
+    <button onclick="agregaProducto()">Añadir</button>
+    <br></br>
+    <div id="ticket">
+
+    </div>
+    <h1 id="total">0</h1>
+    
+    <script>
+        function agregaProducto(){
+            //Agrega la descripcion del producto
+            let concepto = document.getElementById("concepto").value;
+            
+            let cadenaItem = "<li>" + concepto + "</li>";
+            /*Le pongo un acumulador += para que no machaque los productos que voy metiendo*/
+            document.getElementById("ticket").innerHTML = 
+            document.getElementById("ticket").innerHTML + cadenaItem;
+
+            //Agrega el importe al total
+            //Uso Number para converti la cadena a numero
+            let importe = Number(document.getElementById("importe").value);
+            let total = Number(document.getElementById("total").innerHTML);
+            let nuevoTotal = importe + total;
+            document.getElementById("total").innerHTML = nuevoTotal;
+        }
+    </script>
+    
+</body>
+</html>
